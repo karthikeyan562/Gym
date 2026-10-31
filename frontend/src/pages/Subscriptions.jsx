@@ -3,14 +3,9 @@ import {
   CreditCard,
   Plus,
   RefreshCw,
-  Clock,
-  CheckCircle2,
-  AlertTriangle,
   RotateCcw,
   Trash2,
-  Calendar,
-  X,
-  DollarSign
+  X
 } from 'lucide-react';
 import { api } from '../api/apiClient';
 import Badge from '../components/Badge';
@@ -24,11 +19,12 @@ export default function Subscriptions({ onShowToast }) {
   const [filterStatus, setFilterStatus] = useState('ALL');
 
   // Assign Plan Modal State
+  const TODAY = new Date().toISOString().split('T')[0];
   const [isAssignOpen, setIsAssignOpen] = useState(false);
   const [assignForm, setAssignForm] = useState({
     memberId: '',
     planId: '',
-    startDate: new Date().toISOString().split('T')[0],
+    startDate: TODAY,
     amount: '',
     paymentStatus: 'PAID',
     paymentMethod: 'CARD',
@@ -93,11 +89,11 @@ export default function Subscriptions({ onShowToast }) {
         paymentMethod: assignForm.paymentMethod,
         notes: assignForm.notes
       });
-      onShowToast && onShowToast('Subscription assigned successfully!', 'success');
+      onShowToast('Subscription assigned successfully!', 'success');
       setIsAssignOpen(false);
       fetchAllData();
     } catch (err) {
-      onShowToast && onShowToast(err.message || 'Failed to assign plan', 'error');
+      onShowToast(err.message || 'Failed to assign plan', 'error');
     }
   };
 
@@ -122,12 +118,12 @@ export default function Subscriptions({ onShowToast }) {
         paymentMethod: renewForm.paymentMethod,
         notes: renewForm.notes
       });
-      onShowToast && onShowToast('Subscription successfully renewed!', 'success');
+      onShowToast('Subscription successfully renewed!', 'success');
       setIsRenewOpen(false);
       setSubToRenew(null);
       fetchAllData();
     } catch (err) {
-      onShowToast && onShowToast(err.message || 'Renewal failed', 'error');
+      onShowToast(err.message || 'Renewal failed', 'error');
     }
   };
 
@@ -140,17 +136,17 @@ export default function Subscriptions({ onShowToast }) {
     if (!subToDelete) return;
     try {
       await api.deleteSubscription(subToDelete.id);
-      onShowToast && onShowToast('Subscription record removed', 'success');
+      onShowToast('Subscription record removed', 'success');
       setDeleteConfirmOpen(false);
       setSubToDelete(null);
       fetchAllData();
     } catch (err) {
-      onShowToast && onShowToast(err.message || 'Failed to delete subscription', 'error');
+      onShowToast(err.message || 'Failed to delete subscription', 'error');
     }
   };
 
   // Filter subscriptions based on status
-  const today = new Date().toISOString().split('T')[0];
+  const today = TODAY;
   const inSevenDays = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
 
   const filteredSubs = subscriptions.filter(sub => {

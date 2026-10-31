@@ -772,7 +772,7 @@ export const MockStore = {
   },
 
   // Reports
-  getReports: (startDate, endDate) => {
+  getReports: (_startDate, _endDate) => {
     const members = getStoredItem(STORAGE_KEYS.MEMBERS, DEFAULT_MEMBERS);
     const subs = getStoredItem(STORAGE_KEYS.SUBSCRIPTIONS, DEFAULT_SUBSCRIPTIONS);
     const payments = getStoredItem(STORAGE_KEYS.PAYMENTS, DEFAULT_PAYMENTS);

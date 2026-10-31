@@ -91,15 +91,15 @@ export default function Trainers({ onShowToast }) {
 
       if (isEditing && selectedTrainer) {
         await api.updateTrainer(selectedTrainer.id, payload);
-        onShowToast && onShowToast('Trainer details updated', 'success');
+        onShowToast('Trainer details updated', 'success');
       } else {
         await api.createTrainer(payload);
-        onShowToast && onShowToast('Personal trainer onboarded successfully!', 'success');
+        onShowToast('Personal trainer onboarded successfully!', 'success');
       }
       setIsFormOpen(false);
       fetchTrainers();
     } catch (err) {
-      onShowToast && onShowToast(err.message || 'Operation failed', 'error');
+      onShowToast(err.message || 'Operation failed', 'error');
     }
   };
 
@@ -112,12 +112,12 @@ export default function Trainers({ onShowToast }) {
     if (!trainerToDelete) return;
     try {
       await api.deleteTrainer(trainerToDelete.id);
-      onShowToast && onShowToast('Trainer removed', 'success');
+      onShowToast('Trainer removed', 'success');
       setDeleteModalOpen(false);
       setTrainerToDelete(null);
       fetchTrainers();
     } catch (err) {
-      onShowToast && onShowToast(err.message || 'Delete failed', 'error');
+      onShowToast(err.message || 'Delete failed', 'error');
     }
   };
 

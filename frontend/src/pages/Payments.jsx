@@ -59,7 +59,7 @@ export default function Payments({ onShowToast }) {
         paymentMethod: paymentForm.paymentMethod,
         remarks: paymentForm.remarks
       });
-      onShowToast && onShowToast('Payment receipt recorded successfully!', 'success');
+      onShowToast('Payment receipt recorded successfully!', 'success');
       setIsModalOpen(false);
       setPaymentForm({
         memberId: '',
@@ -69,7 +69,7 @@ export default function Payments({ onShowToast }) {
       });
       fetchPayments();
     } catch (err) {
-      onShowToast && onShowToast(err.message || 'Payment recording failed', 'error');
+      onShowToast(err.message || 'Payment recording failed', 'error');
     }
   };
 

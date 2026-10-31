@@ -31,16 +31,14 @@ ChartJS.register(
   Legend
 );
 
-export default function Reports({ onShowToast }) {
-  const [startDate, setStartDate] = useState(
-    new Date(Date.now() - 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
-  );
-  const [endDate, setEndDate] = useState(
-    new Date().toISOString().split('T')[0]
-  );
+export default function Reports({ onShowToast: _onShowToast }) {
+  const startDateInit = new Date(Date.now() - 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0];
+  const endDateInit = new Date().toISOString().split('T')[0];
+
+  const [startDate, setStartDate] = useState(startDateInit);
+  const [endDate, setEndDate] = useState(endDateInit);
 
   const [reportData, setReportData] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   const fetchReport = async () => {
     setLoading(true);
@@ -79,6 +77,7 @@ export default function Reports({ onShowToast }) {
     }
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchReport();
   }, []);

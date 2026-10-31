@@ -5,15 +5,11 @@ import {
   RefreshCw,
   Wrench,
   AlertTriangle,
-  CheckCircle2,
-  Calendar,
   DollarSign,
   Edit2,
   Trash2,
-  X,
-  Layers
+  X
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { api } from '../api/apiClient';
 import Badge from '../components/Badge';
 import ConfirmModal from '../components/ConfirmModal';
@@ -28,12 +24,13 @@ export default function Equipment({ onShowToast }) {
   const [isEditing, setIsEditing] = useState(false);
   const [selectedEquipment, setSelectedEquipment] = useState(null);
 
+  const TODAY = new Date().toISOString().split('T')[0];
   const initialForm = {
     equipmentName: '',
     equipmentImage: '',
     category: 'Strength Machines',
     quantity: '1',
-    purchaseDate: new Date().toISOString().split('T')[0],
+    purchaseDate: TODAY,
     purchaseCost: '3500',
     condition: 'GOOD',
     lastMaintenanceDate: '',
@@ -45,7 +42,7 @@ export default function Equipment({ onShowToast }) {
   const [isMaintOpen, setIsMaintOpen] = useState(false);
   const [maintEquipment, setMaintEquipment] = useState(null);
   const [maintForm, setMaintForm] = useState({
-    maintenanceDate: new Date().toISOString().split('T')[0],
+    maintenanceDate: TODAY,
     maintenanceCost: '150',
     technicianName: 'Apex Gym Technician',
     description: 'Routine scheduled maintenance & cable inspection',
@@ -107,22 +104,22 @@ export default function Equipment({ onShowToast }) {
 
       if (isEditing && selectedEquipment) {
         await api.updateEquipment(selectedEquipment.id, payload);
-        onShowToast && onShowToast('Equipment details updated successfully', 'success');
+        onShowToast('Equipment details updated successfully', 'success');
       } else {
         await api.createEquipment(payload);
-        onShowToast && onShowToast('New equipment added to gym floor!', 'success');
+        onShowToast('New equipment added to gym floor!', 'success');
       }
       setIsFormOpen(false);
       fetchEquipment();
     } catch (err) {
-      onShowToast && onShowToast(err.message || 'Operation failed', 'error');
+      onShowToast(err.message || 'Operation failed', 'error');
     }
   };
 
   const openLogMaintenanceModal = (eq) => {
     setMaintEquipment(eq);
     setMaintForm({
-      maintenanceDate: new Date().toISOString().split('T')[0],
+      maintenanceDate: TODAY,
       maintenanceCost: '150',
       technicianName: 'Apex Gym Technician',
       description: `Service & safety tune-up for ${eq.equipmentName}`,
@@ -145,12 +142,12 @@ export default function Equipment({ onShowToast }) {
         status: maintForm.status,
         resolutionNotes: maintForm.resolutionNotes
       });
-      onShowToast && onShowToast('Maintenance logged & equipment condition updated!', 'success');
+      onShowToast('Maintenance logged & equipment condition updated!', 'success');
       setIsMaintOpen(false);
       setMaintEquipment(null);
       fetchEquipment();
     } catch (err) {
-      onShowToast && onShowToast(err.message || 'Maintenance logging failed', 'error');
+      onShowToast(err.message || 'Maintenance logging failed', 'error');
     }
   };
 
@@ -163,12 +160,12 @@ export default function Equipment({ onShowToast }) {
     if (!equipmentToDelete) return;
     try {
       await api.deleteEquipment(equipmentToDelete.id);
-      onShowToast && onShowToast('Equipment deleted', 'success');
+      onShowToast('Equipment deleted', 'success');
       setDeleteModalOpen(false);
       setEquipmentToDelete(null);
       fetchEquipment();
     } catch (err) {
-      onShowToast && onShowToast(err.message || 'Delete failed', 'error');
+      onShowToast(err.message || 'Delete failed', 'error');
     }
   };
 

@@ -5,15 +5,10 @@ import {
   Plus,
   RefreshCw,
   Clock,
-  UserCheck,
-  Users,
   CheckCircle2,
-  XCircle,
-  AlertTriangle,
   Trash2,
   Edit2,
-  X,
-  FileText
+  X
 } from 'lucide-react';
 import { api } from '../api/apiClient';
 import Badge from '../components/Badge';
@@ -37,10 +32,11 @@ export default function TrainingSessions({ onShowToast }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editingSessionId, setEditingSessionId] = useState(null);
 
+  const TODAY = new Date().toISOString().split('T')[0];
   const initialForm = {
     memberId: '',
     trainerId: initialTrainerId,
-    trainingDate: new Date().toISOString().split('T')[0],
+    trainingDate: TODAY,
     startTime: '09:00',
     endTime: '10:00',
     sessionStatus: 'SCHEDULED',
@@ -113,15 +109,15 @@ export default function TrainingSessions({ onShowToast }) {
 
       if (isEditing && editingSessionId) {
         await api.updateSession(editingSessionId, payload);
-        onShowToast && onShowToast('Training session updated successfully', 'success');
+        onShowToast('Training session updated successfully', 'success');
       } else {
         await api.scheduleSession(payload);
-        onShowToast && onShowToast('Training session booked successfully!', 'success');
+        onShowToast('Training session booked successfully!', 'success');
       }
       setIsModalOpen(false);
       fetchAll();
     } catch (err) {
-      onShowToast && onShowToast(err.message || 'Conflicting schedule detected', 'error');
+      onShowToast(err.message || 'Conflicting schedule detected', 'error');
     }
   };
 
@@ -136,10 +132,10 @@ export default function TrainingSessions({ onShowToast }) {
         sessionStatus: newStatus,
         notes: session.notes
       });
-      onShowToast && onShowToast(`Session status marked as ${newStatus}`, 'success');
+      onShowToast(`Session status marked as ${newStatus}`, 'success');
       fetchAll();
     } catch (err) {
-      onShowToast && onShowToast(err.message || 'Status update failed', 'error');
+      onShowToast(err.message || 'Status update failed', 'error');
     }
   };
 
@@ -152,12 +148,12 @@ export default function TrainingSessions({ onShowToast }) {
     if (!sessionToDelete) return;
     try {
       await api.deleteSession(sessionToDelete.id);
-      onShowToast && onShowToast('Session deleted', 'success');
+      onShowToast('Session deleted', 'success');
       setDeleteModalOpen(false);
       setSessionToDelete(null);
       fetchAll();
     } catch (err) {
-      onShowToast && onShowToast(err.message || 'Failed to delete session', 'error');
+      onShowToast(err.message || 'Failed to delete session', 'error');
     }
   };
 

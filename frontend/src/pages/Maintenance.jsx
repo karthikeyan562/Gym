@@ -4,12 +4,8 @@ import {
   Plus,
   RefreshCw,
   DollarSign,
-  Calendar,
-  CheckCircle2,
   Trash2,
-  X,
-  AlertTriangle,
-  UserCheck
+  X
 } from 'lucide-react';
 import { api } from '../api/apiClient';
 import Badge from '../components/Badge';
@@ -22,9 +18,10 @@ export default function Maintenance({ onShowToast }) {
 
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const TODAY = new Date().toISOString().split('T')[0];
   const initialForm = {
     equipmentId: '',
-    maintenanceDate: new Date().toISOString().split('T')[0],
+    maintenanceDate: TODAY,
     maintenanceCost: '180',
     technicianName: 'Apex Gym Technician',
     description: '',
@@ -71,12 +68,12 @@ export default function Maintenance({ onShowToast }) {
         resolutionNotes: formData.resolutionNotes,
         nextMaintenanceDate: formData.nextMaintenanceDate || null
       });
-      onShowToast && onShowToast('Maintenance service record added successfully', 'success');
+      onShowToast('Maintenance service record added successfully', 'success');
       setIsModalOpen(false);
       setFormData(initialForm);
       fetchData();
     } catch (err) {
-      onShowToast && onShowToast(err.message || 'Operation failed', 'error');
+      onShowToast(err.message || 'Operation failed', 'error');
     }
   };
 
@@ -89,12 +86,12 @@ export default function Maintenance({ onShowToast }) {
     if (!maintToDelete) return;
     try {
       await api.deleteMaintenance(maintToDelete.id);
-      onShowToast && onShowToast('Maintenance log removed', 'success');
+      onShowToast('Maintenance log removed', 'success');
       setDeleteModalOpen(false);
       setMaintToDelete(null);
       fetchData();
     } catch (err) {
-      onShowToast && onShowToast(err.message || 'Failed to delete record', 'error');
+      onShowToast(err.message || 'Failed to delete record', 'error');
     }
   };
 

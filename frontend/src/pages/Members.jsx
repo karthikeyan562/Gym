@@ -8,13 +8,9 @@ import {
   Eye,
   Phone,
   Mail,
-  Calendar,
-  MapPin,
-  ShieldAlert,
   UserCheck,
   X,
-  RefreshCw,
-  Sparkles
+  RefreshCw
 } from 'lucide-react';
 import { api } from '../api/apiClient';
 import Badge from '../components/Badge';
@@ -37,6 +33,7 @@ export default function Members({ onShowToast, globalSearch }) {
   const [memberToDelete, setMemberToDelete] = useState(null);
 
   // Form State
+  const TODAY = new Date().toISOString().split('T')[0];
   const initialFormData = {
     fullName: '',
     profilePhoto: '',
@@ -45,7 +42,7 @@ export default function Members({ onShowToast, globalSearch }) {
     phoneNumber: '',
     email: '',
     address: '',
-    joiningDate: new Date().toISOString().split('T')[0],
+    joiningDate: TODAY,
     membershipStatus: 'ACTIVE',
     emergencyContact: '',
     initialPlanId: '',
@@ -128,15 +125,15 @@ export default function Members({ onShowToast, globalSearch }) {
     try {
       if (isEditing && selectedMember) {
         await api.updateMember(selectedMember.id, formData);
-        onShowToast && onShowToast('Member profile updated successfully', 'success');
+        onShowToast('Member profile updated successfully', 'success');
       } else {
         await api.createMember(formData);
-        onShowToast && onShowToast('New member registered successfully!', 'success');
+        onShowToast('New member registered successfully!', 'success');
       }
       setIsFormOpen(false);
       fetchMembers(searchTerm);
     } catch (err) {
-      onShowToast && onShowToast(err.message || 'Operation failed', 'error');
+      onShowToast(err.message || 'Operation failed', 'error');
     }
   };
 
@@ -149,12 +146,12 @@ export default function Members({ onShowToast, globalSearch }) {
     if (!memberToDelete) return;
     try {
       await api.deleteMember(memberToDelete.id);
-      onShowToast && onShowToast(`Member ${memberToDelete.fullName} removed`, 'success');
+      onShowToast(`Member ${memberToDelete.fullName} removed`, 'success');
       setDeleteConfirmOpen(false);
       setMemberToDelete(null);
       fetchMembers(searchTerm);
     } catch (err) {
-      onShowToast && onShowToast(err.message || 'Failed to delete member', 'error');
+      onShowToast(err.message || 'Failed to delete member', 'error');
     }
   };
 

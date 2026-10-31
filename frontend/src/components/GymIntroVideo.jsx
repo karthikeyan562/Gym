@@ -63,6 +63,11 @@ export default function GymIntroVideo({ isOpen, onEnter }) {
     }
   };
 
+  const handleEnterClick = () => {
+    stopSynthBeat();
+    onEnter();
+  };
+
   useEffect(() => {
     if (!isOpen) return;
 
@@ -88,14 +93,10 @@ export default function GymIntroVideo({ isOpen, onEnter }) {
         } catch {}
       }
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   if (!isOpen) return null;
-
-  const handleEnterClick = () => {
-    stopSynthBeat();
-    onEnter();
-  };
 
   return (
     <div style={{

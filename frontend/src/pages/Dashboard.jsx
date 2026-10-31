@@ -87,7 +87,7 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
 
   // Video Demo Modal State
   const [videoModalOpen, setVideoModalOpen] = useState(false);
-  const [activeVideoDemo, setActiveVideoDemo] = useState({
+  const [activeVideoDemo] = useState({
     title: 'Bench Press Form & Scapular Retraction',
     videoUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/70/Muscle_Strengthening_at_the_Gym_-_Chest_Press.webm'
   });

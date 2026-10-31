@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import { Play, Sparkles, Activity, ShieldCheck, ChevronRight } from 'lucide-react';
+import { Play } from 'lucide-react';
 
 export default function BodyMuscleHeatmap({ onOpenDemoVideo }) {
   const [selectedMuscle, setSelectedMuscle] = useState('chest');
   const [repsToFailure, setRepsToFailure] = useState('1 – 2');
-  const [intensity, setIntensity] = useState(85);
-  const [balanceRatio, setBalanceRatio] = useState('52 / 48');
   const [showRirMenu, setShowRirMenu] = useState(false);
 
   const muscleData = {
