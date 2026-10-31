@@ -1,0 +1,1125 @@
+/* ===================================================================
+   WORKOUT MASTERS - HIGH-TECH ATHLETIC DARK & NEON UI/UX DESIGN SYSTEM
+   Matches exact reference design with floating dock & muscle heatmaps
+   =================================================================== */
+
+:root {
+  --bg-deep: #080A0F;
+  --bg-shell: #0C0F17;
+  --bg-card: #121620;
+  --bg-card-hover: #181D2A;
+  --bg-card-inner: #0E121B;
+  --bg-dock: #10141D;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-highlight: rgba(255, 255, 255, 0.16);
+  --border-green: rgba(132, 204, 22, 0.3);
+  --border-orange: rgba(255, 107, 0, 0.35);
+
+  --accent-orange: #FF6B00;
+  --accent-orange-bright: #FF8533;
+  --accent-lime: #84CC16;
+  --accent-lime-bright: #A3E635;
+  --accent-green: #10B981;
+  --accent-amber: #F59E0B;
+  --accent-cyan: #38BDF8;
+  --accent-red: #EF4444;
+
+  --text-white: #FFFFFF;
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --text-dim: #475569;
+
+  --font-display: 'Syne', 'Outfit', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-tech: 'Space Grotesk', monospace;
+
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 30px;
+  --radius-full: 9999px;
+
+  --shadow-dock: 0 10px 40px rgba(0, 0, 0, 0.7);
+  --shadow-card: 0 12px 36px rgba(0, 0, 0, 0.55);
+  --shadow-glow-orange: 0 0 25px rgba(255, 107, 0, 0.35);
+  --shadow-glow-lime: 0 0 25px rgba(132, 204, 22, 0.3);
+
+  --dock-width: 82px;
+  --sidebar-expanded-width: 260px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: #1E2433;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-orange);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--text-white);
+  letter-spacing: -0.02em;
+}
+
+/* ================= SHELL APPLICATION CONTAINER ================= */
+.workout-masters-shell {
+  min-height: 100vh;
+  background-color: var(--bg-deep);
+  display: flex;
+  padding: 16px;
+  gap: 16px;
+}
+
+@media (max-width: 1024px) {
+  .workout-masters-shell {
+    padding: 8px;
+    gap: 8px;
+  }
+}
+
+/* Outer Rounded Frame like the attached image */
+.app-frame {
+  flex: 1;
+  background: var(--bg-shell);
+  border: 1px solid var(--border-subtle);
+  border-radius: 28px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 768px) {
+  .app-frame {
+    border-radius: 16px;
+  }
+}
+
+/* ================= MODERN FLOATING ICON DOCK ================= */
+.dock-sidebar {
+  width: var(--dock-width);
+  background: var(--bg-dock);
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 10px;
+  gap: 16px;
+  z-index: 100;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 1024px) {
+  .dock-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    box-shadow: 20px 0 50px rgba(0, 0, 0, 0.9);
+  }
+  .dock-sidebar.mobile-open {
+    transform: translateX(0);
+  }
+}
+
+.dock-brand-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #FF6B00 0%, #FF3D00 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: var(--shadow-glow-orange);
+  cursor: pointer;
+  margin-bottom: 8px;
+  transition: transform 0.2s;
+}
+
+.dock-brand-logo:hover {
+  transform: scale(1.08);
+}
+
+.dock-nav-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  align-items: center;
+  flex: 1;
+}
+
+.dock-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  text-decoration: none;
+}
+
+.dock-btn:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Active Pill State matching attached image white rounded button */
+.dock-btn.active {
+  background: #FFFFFF;
+  color: #0B0E14;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.35);
+  border-radius: 16px;
+}
+
+.dock-tooltip {
+  position: absolute;
+  left: 62px;
+  background: #1A2130;
+  color: #FFFFFF;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+  border: 1px solid var(--border-subtle);
+  z-index: 1000;
+}
+
+.dock-btn:hover .dock-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ================= EXPANDED APP VIEWPORT ================= */
+.app-viewport {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+/* Top Header Bar Matching Attached Image */
+.wm-top-header {
+  padding: 24px 32px 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .wm-top-header {
+    padding: 16px;
+  }
+}
+
+.wm-header-greeting {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.wm-headline-title {
+  font-family: var(--font-heading);
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.wm-headline-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  margin-top: 3px;
+}
+
+.wm-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.circle-icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.circle-icon-btn:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.25);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+}
+
+/* User Pill Component matching the image */
+.user-profile-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 6px 16px 6px 6px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.user-profile-pill:hover {
+  border-color: var(--accent-orange);
+  background: var(--bg-card-hover);
+}
+
+.user-profile-pill img {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  border: 2px solid var(--accent-orange);
+}
+
+.user-profile-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-profile-name {
+  color: #FFFFFF;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.user-profile-joining {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+}
+
+/* ================= WORKOUT MASTERS DASHBOARD MAIN GRID ================= */
+.wm-dashboard-grid {
+  padding: 0 32px 32px 32px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 22px;
+}
+
+@media (max-width: 1280px) {
+  .wm-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .wm-dashboard-grid {
+    padding: 0 16px 24px 16px;
+  }
+}
+
+.wm-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.wm-right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* Top Split: Hero Card (2 cols) + 4 Metrics (1 col 2x2 grid) */
+.wm-hero-and-stats-row {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .wm-hero-and-stats-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================= CENTER WORKOUT HERO CARD ================= */
+.workout-hero-card {
+  position: relative;
+  height: 360px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  background: #0B0E14;
+  box-shadow: var(--shadow-card);
+}
+
+.workout-hero-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  filter: contrast(1.1) brightness(0.9);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.workout-hero-card:hover .workout-hero-bg {
+  transform: scale(1.03);
+}
+
+.workout-hero-gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(12, 15, 23, 0.2) 0%, rgba(12, 15, 23, 0.88) 100%);
+  pointer-events: none;
+}
+
+/* Interactive Workout HUD Overlay */
+.workout-hud-bottom {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: rgba(18, 22, 32, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 12px 20px;
+}
+
+.hud-playback-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hud-control-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.hud-control-btn:hover {
+  background: var(--accent-orange);
+  border-color: var(--accent-orange);
+  transform: scale(1.08);
+}
+
+.hud-progress-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hud-progress-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+}
+
+.hud-progress-title {
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.hud-progress-percent {
+  color: var(--accent-lime-bright);
+  font-weight: 700;
+  font-family: var(--font-tech);
+}
+
+/* Segmented orange to neon-lime progress bar matching attached image */
+.hud-progress-segmented-bar {
+  display: flex;
+  gap: 5px;
+  height: 6px;
+  width: 100%;
+}
+
+.hud-bar-segment {
+  flex: 1;
+  height: 100%;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.hud-bar-segment.orange { background: #FF6B00; }
+.hud-bar-segment.orange-lime { background: #EAB308; }
+.hud-bar-segment.lime { background: #84CC16; }
+
+.hud-device-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(132, 204, 22, 0.12);
+  border: 1px solid var(--border-green);
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  color: var(--accent-lime-bright);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+/* ================= 4 METRICS CARDS (TOP RIGHT 2x2 GRID) ================= */
+.wm-stats-2x2-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.wm-stat-metric-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.wm-stat-metric-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+}
+
+.wm-stat-card-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.wm-stat-card-value {
+  font-family: var(--font-tech);
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 10px 0 4px 0;
+  line-height: 1;
+}
+
+.wm-stat-card-trend {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.wm-stat-card-trend span {
+  color: var(--accent-lime-bright);
+  font-weight: 700;
+}
+
+.wm-sparkline-svg {
+  width: 100%;
+  height: 28px;
+  margin-top: 6px;
+  opacity: 0.85;
+}
+
+/* ================= BOTTOM ROW 3 CARDS ================= */
+.wm-bottom-cards-row {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1.15fr;
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .wm-bottom-cards-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.wm-dashboard-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 24px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+}
+
+.wm-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.wm-card-title {
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Week Progress Pill Bars matching attached image */
+.week-progress-bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+  height: 160px;
+  padding-top: 10px;
+}
+
+.day-bar-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.day-bar-pill {
+  width: 100%;
+  max-width: 28px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #84CC16 0%, #4D7C0F 100%);
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(132, 204, 22, 0.25);
+  position: relative;
+}
+
+.day-bar-pill.rest {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+}
+
+.day-bar-value {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.day-bar-name {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Hydration Semi-Circular Gauge Meter matching attached image */
+.hydration-gauge-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.gauge-svg {
+  width: 180px;
+  height: 100px;
+}
+
+.gauge-center-text {
+  position: absolute;
+  top: 48px;
+  text-align: center;
+}
+
+.gauge-status-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.gauge-status-value {
+  font-family: var(--font-tech);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #FFFFFF;
+}
+
+.water-glasses-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.water-glass-icon {
+  width: 18px;
+  height: 24px;
+  border: 1.5px solid var(--accent-lime);
+  border-radius: 2px 2px 6px 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.water-glass-icon.filled {
+  background: linear-gradient(180deg, #A3E635 0%, #65A30D 100%);
+  border-color: #A3E635;
+}
+
+.water-glass-icon.empty {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Today's Workout Exercise List matching attached image */
+.today-workouts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.workout-item-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: var(--bg-card-inner);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.workout-item-row:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateX(3px);
+}
+
+.workout-item-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.workout-icon-bubble {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+}
+
+.workout-item-meta h5 {
+  font-size: 0.88rem;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.workout-item-meta span {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ================= RIGHT PANEL: MUSCLE HEATMAP & TELEMETRY ================= */
+.right-panel-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 24px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.muscle-diagram-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: var(--bg-card-inner);
+  border-radius: 18px;
+  padding: 16px;
+  border: 1px solid var(--border-subtle);
+  position: relative;
+}
+
+/* Video Thumbnail with interactive play button matching the attached image */
+.video-thumbnail-player {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+}
+
+.video-thumbnail-player img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-play-center-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.video-play-center-btn:hover {
+  background: var(--accent-orange);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Workout Intensity and Muscle Balance Gauge widgets */
+.intensity-gauge-widget {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.muscle-balance-scale {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.balance-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.balance-dot.active-left {
+  width: 12px;
+  height: 12px;
+  background: var(--accent-amber);
+}
+
+.balance-dot.active-center {
+  width: 16px;
+  height: 16px;
+  background: #EAB308;
+}
+
+
+/* ===================================================================
+   CORELY UI SPECIFIC DESIGN REFINEMENTS MATCHING ATTACHED SCREENSHOT
+   =================================================================== */
+
+.corely-dock-brand {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.corely-dock-brand:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.06);
+}
+
+.corely-logo-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.corely-brand-text {
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+}
+
+/* Dock buttons with exact white active squircle */
+.corely-dock-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid transparent;
+  color: #94A3B8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  text-decoration: none;
+}
+
+.corely-dock-btn:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* EXACT WHITE SQUIRCLE WITH DARK ICON FROM SCREENSHOT */
+.corely-dock-btn.is-active {
+  background: #FFFFFF !important;
+  color: #080A0F !important;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.4);
+  border-radius: 16px;
+  transform: scale(1.02);
+}
+
+.corely-dock-btn.is-active svg {
+  stroke: #080A0F !important;
+}
+
+.corely-dock-btn.logout-btn:hover {
+  color: #EF4444;
+  background: rgba(239, 68, 68, 0.15);
+}
+
+/* Header layout */
+.wm-header-brand-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.wm-header-center-headline {
+  flex: 1;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .wm-header-center-headline {
+    text-align: left;
+    margin-top: 8px;
+    width: 100%;
+  }
+}
+
+.header-pill-intro-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(132, 204, 22, 0.12);
+  border: 1px solid rgba(132, 204, 22, 0.35);
+  color: #84CC16;
+  border-radius: 9999px;
+  padding: 8px 16px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.header-pill-intro-btn:hover {
+  background: rgba(132, 204, 22, 0.2);
+  border-color: #84CC16;
+}
+
+/* Circular button matching screenshot header */
+.corely-circle-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #CBD5E1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.corely-circle-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.notification-dot {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  width: 8px;
+  height: 8px;
+  background: #84CC16;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #84CC16;
+}
+
+/* Profile pill matching screenshot */
+.corely-user-profile-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  padding: 4px 14px 4px 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.corely-user-profile-pill:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.corely-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+}
+
+.corely-user-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.corely-user-name {
+  color: #FFFFFF;
+  font-size: 0.84rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.corely-user-joining {
+  color: #64748B;
+  font-size: 0.7rem;
+}
+
+/* Dropdown menus */
+.corely-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  background: #10141E;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85);
+  z-index: 1000;
+  animation: fadeIn 0.15s ease-out;
+}
+
+.dropdown-action-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: none;
+  border: none;
+  color: #E2E8F0;
+  padding: 9px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.84rem;
+  font-weight: 600;
+  transition: all 0.15s;
+}
+
+.dropdown-action-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #FFFFFF;
+}
