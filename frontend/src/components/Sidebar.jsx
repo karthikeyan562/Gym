@@ -152,7 +152,7 @@ export default function Sidebar({ mobileOpen, setMobileOpen, onOpenIntro }) {
               onClick={onOpenIntro}
               title="Watch Cinematic Intro"
             >
-              <PlaySquare size={19} color="#84CC16" />
+              <PlaySquare size={19} color="#FF8A32" />
               <span className="dock-tooltip">Replay Video Intro</span>
             </button>
           )}
@@ -179,7 +179,7 @@ export default function Sidebar({ mobileOpen, setMobileOpen, onOpenIntro }) {
           left: '96px',
           bottom: '20px',
           width: '280px',
-          background: '#0F131D',
+          background: '#202329',
           border: '1px solid rgba(255, 255, 255, 0.12)',
           borderRadius: '24px',
           padding: '24px 18px',
@@ -193,11 +193,11 @@ export default function Sidebar({ mobileOpen, setMobileOpen, onOpenIntro }) {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', padding: '0 6px' }}>
             <div>
               <h3 style={{ fontSize: '1rem', color: '#fff', fontWeight: 800, margin: 0 }}>Management Suite</h3>
-              <p style={{ fontSize: '0.74rem', color: '#94A3B8', margin: '2px 0 0 0' }}>All enterprise gym tools</p>
+              <p style={{ fontSize: '0.74rem', color: '#A5A8B0', margin: '2px 0 0 0' }}>All enterprise gym tools</p>
             </div>
             <button 
               onClick={() => setSuiteOpen(false)}
-              style={{ background: 'none', border: 'none', color: '#94A3B8', cursor: 'pointer', padding: '4px' }}
+              style={{ background: 'none', border: 'none', color: '#A5A8B0', cursor: 'pointer', padding: '4px' }}
             >
               <X size={18} />
             </button>
@@ -219,9 +219,9 @@ export default function Sidebar({ mobileOpen, setMobileOpen, onOpenIntro }) {
                     padding: '12px 14px',
                     borderRadius: '12px',
                     textDecoration: 'none',
-                    background: isActive ? 'rgba(132, 204, 22, 0.15)' : 'rgba(255, 255, 255, 0.03)',
-                    border: isActive ? '1px solid rgba(132, 204, 22, 0.35)' : '1px solid transparent',
-                    color: isActive ? '#A3E635' : '#E2E8F0',
+                    background: isActive ? 'rgba(255, 138, 50, 0.15)' : 'rgba(255, 255, 255, 0.03)',
+                    border: isActive ? '1px solid rgba(255, 138, 50, 0.35)' : '1px solid transparent',
+                    color: isActive ? '#FF8A32' : '#E2E8F0',
                     fontSize: '0.85rem',
                     fontWeight: 600,
                     transition: 'all 0.15s'
@@ -229,10 +229,10 @@ export default function Sidebar({ mobileOpen, setMobileOpen, onOpenIntro }) {
                   className="suite-link-hover"
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <Icon size={17} color={isActive ? '#A3E635' : '#94A3B8'} />
+                    <Icon size={17} color={isActive ? '#FF8A32' : '#A5A8B0'} />
                     <span>{item.name}</span>
                   </div>
-                  <ChevronRight size={14} color="#64748B" />
+                  <ChevronRight size={14} color="#5C6070" />
                 </NavLink>
               );
             })}
@@ -246,10 +246,10 @@ export default function Sidebar({ mobileOpen, setMobileOpen, onOpenIntro }) {
             alignItems: 'center',
             gap: '8px',
             fontSize: '0.74rem',
-            color: '#94A3B8'
+            color: '#A5A8B0'
           }}>
-            <Sparkles size={14} color="#84CC16" />
-            <span>Corely Pro v2.4 &bull; Sync Active</span>
+            <Sparkles size={14} color="#FF8A32" />
+            <span>Workout Masters Pro &bull; Multiverse Sync Active</span>
           </div>
         </div>
       )}

@@ -101,8 +101,8 @@ export default function Reports({ onShowToast: _onShowToast }) {
           reportData?.rangeRevenue || 729.96,
           reportData?.totalMaintenanceCost || 430.0,
         ],
-        backgroundColor: ['rgba(16, 185, 129, 0.8)', 'rgba(255, 107, 0, 0.8)'],
-        borderColor: ['#10B981', '#FF6B00'],
+        backgroundColor: ['rgba(165, 255, 56, 0.8)', 'rgba(255, 138, 50, 0.8)'],
+        borderColor: ['#A5FF38', '#FF8A32'],
         borderWidth: 1,
         borderRadius: 8,
       },
@@ -115,10 +115,10 @@ export default function Reports({ onShowToast: _onShowToast }) {
     plugins: {
       legend: { display: false },
       tooltip: {
-        backgroundColor: '#161922',
-        titleColor: '#FF6B00',
+        backgroundColor: '#202329',
+        titleColor: '#FF8A32',
         bodyColor: '#FFFFFF',
-        borderColor: 'rgba(255, 107, 0, 0.3)',
+        borderColor: 'rgba(255, 138, 50, 0.3)',
         borderWidth: 1,
         padding: 10,
       },
@@ -126,7 +126,7 @@ export default function Reports({ onShowToast: _onShowToast }) {
     scales: {
       x: {
         grid: { color: 'rgba(255, 255, 255, 0.05)' },
-        ticks: { color: '#94A3B8' },
+        ticks: { color: '#A5A8B0' },
       },
       y: {
         grid: { color: 'rgba(255, 255, 255, 0.05)' },

@@ -2,16 +2,23 @@ import React from 'react';
 
 export default function Badge({ status, text }) {
   const s = (status || '').toUpperCase();
-  let badgeClass = 'badge-orange';
+  let badgeClass = 'badge-silver';
 
-  if (['ACTIVE', 'GOOD', 'PAID', 'COMPLETED', 'RESOLVED'].includes(s)) {
+  // Green: Active / Good / Completed / Paid / Resolved
+  if (['ACTIVE', 'GOOD', 'COMPLETED', 'PAID', 'RESOLVED'].includes(s)) {
     badgeClass = 'badge-active';
-  } else if (['EXPIRED', 'FAILED', 'CANCELLED', 'INACTIVE', 'NO_SHOW'].includes(s)) {
+  }
+  // Red: Needs repair / Expired / Inactive / Failed / Cancelled / No show
+  else if (['NEEDS_REPAIR', 'EXPIRED', 'INACTIVE', 'FAILED', 'CANCELLED', 'NO_SHOW'].includes(s)) {
     badgeClass = 'badge-expired';
-  } else if (['PENDING', 'NEEDS_REPAIR', 'EXPIRING_SOON'].includes(s)) {
+  }
+  // Amber: Scheduled / Pending / Under maintenance / Expiring soon / In progress
+  else if (['SCHEDULED', 'PENDING', 'UNDER_MAINTENANCE', 'EXPIRING_SOON', 'IN_PROGRESS'].includes(s)) {
     badgeClass = 'badge-pending';
-  } else if (['UNDER_MAINTENANCE', 'SCHEDULED', 'IN_PROGRESS'].includes(s)) {
-    badgeClass = 'badge-maintenance';
+  }
+  // Any other: Silver / Grey
+  else {
+    badgeClass = 'badge-silver';
   }
 
   return (

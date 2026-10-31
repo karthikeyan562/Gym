@@ -236,10 +236,10 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
       {
         label: 'Monthly Revenue ($)',
         data: revenueValues,
-        borderColor: '#84CC16',
-        backgroundColor: 'rgba(132, 204, 22, 0.12)',
+        borderColor: '#FF8A32',
+        backgroundColor: 'rgba(255, 138, 50, 0.12)',
         borderWidth: 3,
-        pointBackgroundColor: '#84CC16',
+        pointBackgroundColor: '#FF8A32',
         pointBorderColor: '#FFFFFF',
         pointHoverRadius: 6,
         fill: true,
@@ -254,10 +254,10 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
     plugins: {
       legend: { display: false },
       tooltip: {
-        backgroundColor: '#161922',
-        titleColor: '#84CC16',
+        backgroundColor: '#202329',
+        titleColor: '#FF8A32',
         bodyColor: '#FFFFFF',
-        borderColor: 'rgba(132, 204, 22, 0.3)',
+        borderColor: 'rgba(255, 138, 50, 0.3)',
         borderWidth: 1,
         padding: 10,
       },
@@ -265,12 +265,12 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
     scales: {
       x: {
         grid: { color: 'rgba(255, 255, 255, 0.05)' },
-        ticks: { color: '#94A3B8' },
+        ticks: { color: '#A5A8B0' },
       },
       y: {
         grid: { color: 'rgba(255, 255, 255, 0.05)' },
         ticks: {
-          color: '#94A3B8',
+          color: '#A5A8B0',
           callback: (value) => `$${value}`,
         },
       },
@@ -286,8 +286,8 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
           stats?.expiredSubscriptions || 1,
           stats?.expiringSoonSubscriptions || 2,
         ],
-        backgroundColor: ['#84CC16', '#EF4444', '#F59E0B'],
-        borderColor: '#141923',
+        backgroundColor: ['#A5FF38', '#EF4444', '#F59E0B'],
+        borderColor: '#202329',
         borderWidth: 3,
       },
     ],
@@ -333,8 +333,8 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
               padding: '8px 24px',
               borderRadius: '9999px',
               border: 'none',
-              background: activeTab === 'hud' ? '#FFFFFF' : 'transparent',
-              color: activeTab === 'hud' ? '#080A0F' : '#94A3B8',
+              background: activeTab === 'hud' ? 'linear-gradient(135deg, #FF8A32 0%, #FFA055 100%)' : 'transparent',
+              color: activeTab === 'hud' ? '#FFFFFF' : '#A5A8B0',
               fontWeight: 700,
               fontSize: '0.85rem',
               cursor: 'pointer',
@@ -342,10 +342,10 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
               alignItems: 'center',
               gap: '8px',
               transition: 'all 0.2s',
-              boxShadow: activeTab === 'hud' ? '0 4px 15px rgba(255,255,255,0.25)' : 'none'
+              boxShadow: activeTab === 'hud' ? '0 4px 18px rgba(255, 138, 50, 0.4)' : 'none'
             }}
           >
-            <Zap size={16} color={activeTab === 'hud' ? '#84CC16' : '#94A3B8'} fill={activeTab === 'hud' ? '#84CC16' : 'none'} />
+            <Zap size={16} color={activeTab === 'hud' ? '#FFFFFF' : '#A5A8B0'} fill={activeTab === 'hud' ? '#FFFFFF' : 'none'} />
             Workout HUD
           </button>
 
@@ -355,8 +355,8 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
               padding: '8px 24px',
               borderRadius: '9999px',
               border: 'none',
-              background: activeTab === 'management' ? '#FFFFFF' : 'transparent',
-              color: activeTab === 'management' ? '#080A0F' : '#94A3B8',
+              background: activeTab === 'management' ? 'linear-gradient(135deg, #FF8A32 0%, #FFA055 100%)' : 'transparent',
+              color: activeTab === 'management' ? '#FFFFFF' : '#A5A8B0',
               fontWeight: 700,
               fontSize: '0.85rem',
               cursor: 'pointer',
@@ -364,10 +364,10 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
               alignItems: 'center',
               gap: '8px',
               transition: 'all 0.2s',
-              boxShadow: activeTab === 'management' ? '0 4px 15px rgba(255,255,255,0.25)' : 'none'
+              boxShadow: activeTab === 'management' ? '0 4px 18px rgba(255, 138, 50, 0.4)' : 'none'
             }}
           >
-            <SlidersHorizontal size={16} color={activeTab === 'management' ? '#84CC16' : '#94A3B8'} />
+            <SlidersHorizontal size={16} color={activeTab === 'management' ? '#FFFFFF' : '#A5A8B0'} />
             Management Suite
           </button>
         </div>
@@ -381,8 +381,8 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
           >
             <RefreshCw size={15} className={loading ? 'spin-anim' : ''} />
           </button>
-          <span style={{ fontSize: '0.82rem', color: '#94A3B8' }}>
-            Telemetry: <span style={{ color: '#84CC16', fontWeight: 700 }}>Synchronized</span>
+          <span style={{ fontSize: '0.82rem', color: '#A5A8B0' }}>
+            Telemetry: <span style={{ color: '#A5FF38', fontWeight: 700 }}>Synchronized</span>
           </span>
         </div>
       </div>
@@ -495,8 +495,8 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
                         width: '8px',
                         height: '8px',
                         borderRadius: '50%',
-                        background: '#84CC16',
-                        boxShadow: '0 0 10px #84CC16'
+                        background: '#A5FF38',
+                        boxShadow: '0 0 10px #A5FF38'
                       }} />
                       <span>{activeDevice}</span>
                       <span style={{ fontSize: '0.68rem', opacity: 0.8, color: '#FFFFFF' }}>Connected</span>
@@ -508,7 +508,7 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
                         bottom: '100%',
                         right: 0,
                         marginBottom: '8px',
-                        background: '#121620',
+                        background: '#202329',
                         border: '1px solid rgba(255,255,255,0.15)',
                         borderRadius: '12px',
                         padding: '6px',
@@ -516,7 +516,7 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
                         zIndex: 100,
                         width: '180px'
                       }}>
-                        <div style={{ padding: '4px 8px', fontSize: '0.68rem', color: '#94A3B8', textTransform: 'uppercase', fontWeight: 700 }}>
+                        <div style={{ padding: '4px 8px', fontSize: '0.68rem', color: '#A5A8B0', textTransform: 'uppercase', fontWeight: 700 }}>
                           Select Device
                         </div>
                         {['GymSync Pro', 'Apple Watch Ultra', 'Whoop 4.0', 'Garmin Epix'].map((dev) => (
@@ -531,7 +531,7 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
                             style={{ fontSize: '0.78rem', padding: '6px 8px' }}
                           >
                             <span>{dev}</span>
-                            {activeDevice === dev && <span style={{ color: '#84CC16' }}>✓</span>}
+                            {activeDevice === dev && <span style={{ color: '#A5FF38' }}>✓</span>}
                           </button>
                         ))}
                       </div>
@@ -545,7 +545,7 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
                 {/* 1. Workout Sessions */}
                 <div className="wm-stat-metric-card">
                   <div className="wm-stat-card-top">
-                    <Activity size={17} color="#84CC16" />
+                    <Activity size={17} color="#A5FF38" />
                     <span>Workout Sessions</span>
                   </div>
                   <div>
@@ -557,7 +557,7 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
                   <svg className="wm-sparkline-svg" viewBox="0 0 100 24" fill="none">
                     <path
                       d="M0 16 Q15 6 30 14 T60 8 T85 15 T100 5"
-                      stroke="#84CC16"
+                      stroke="#A5FF38"
                       strokeWidth="2.5"
                       strokeLinecap="round"
                     />
@@ -567,7 +567,7 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
                 {/* 2. Calories Burned */}
                 <div className="wm-stat-metric-card">
                   <div className="wm-stat-card-top">
-                    <Flame size={17} color="#FF6B00" />
+                    <Flame size={17} color="#FF8A32" />
                     <span>Calories Burned</span>
                   </div>
                   <div>
@@ -579,7 +579,7 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
                   <svg className="wm-sparkline-svg" viewBox="0 0 100 24" fill="none">
                     <path
                       d="M0 18 Q20 5 40 16 T75 6 T100 12"
-                      stroke="#FF6B00"
+                      stroke="#FF8A32"
                       strokeWidth="2.5"
                       strokeLinecap="round"
                     />
@@ -702,7 +702,7 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
                       <div 
                         className="day-bar-value"
                         style={{
-                          color: d.isPeak ? '#84CC16' : d.isRest ? '#64748B' : '#FFFFFF',
+                          color: d.isPeak ? '#A5FF38' : d.isRest ? '#5C6070' : '#FFFFFF',
                           fontWeight: d.isPeak ? 800 : 600,
                           fontSize: d.isRest ? '0.64rem' : '0.74rem'
                         }}
@@ -715,8 +715,8 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
                         style={{
                           height: d.height,
                           ...(d.isPeak ? {
-                            background: 'linear-gradient(180deg, #A3E635 0%, #65A30D 100%)',
-                            boxShadow: '0 0 16px rgba(132, 204, 22, 0.55)'
+                            background: 'linear-gradient(180deg, #A5FF38 0%, #7ACC28 100%)',
+                            boxShadow: '0 0 16px rgba(165, 255, 56, 0.55)'
                           } : {})
                         }}
                       />
@@ -740,11 +740,11 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
                     fontSize: '0.75rem'
                   }}>
                     <div>
-                      <strong style={{ color: '#84CC16' }}>{selectedDayDetails.day}:</strong> {selectedDayDetails.exercises}
+                      <strong style={{ color: '#A5FF38' }}>{selectedDayDetails.day}:</strong> {selectedDayDetails.exercises}
                     </div>
                     <button
                       onClick={() => setSelectedDayDetails(null)}
-                      style={{ background: 'none', border: 'none', color: '#94A3B8', cursor: 'pointer' }}
+                      style={{ background: 'none', border: 'none', color: '#A5A8B0', cursor: 'pointer' }}
                     >
                       ✕
                     </button>
@@ -756,7 +756,7 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
               <div className="wm-dashboard-card">
                 <div className="wm-card-header">
                   <h4 className="wm-card-title">
-                    <Droplet size={17} color="#84CC16" /> Hydration Level
+                    <Droplet size={17} color="#A5FF38" /> Hydration Level
                   </h4>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <button 
@@ -765,7 +765,7 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
                       onClick={() => addQuickWater(250)}
                       title="Quick drink +250ml"
                     >
-                      <Plus size={14} color="#84CC16" />
+                      <Plus size={14} color="#A5FF38" />
                     </button>
                     <div 
                       className="circle-icon-btn" 
@@ -798,8 +798,8 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
                           key={g}
                           onClick={() => { setDailyGoalLitres(g); setShowGoalMenu(false); }}
                           style={{
-                            background: dailyGoalLitres === g ? '#84CC16' : 'rgba(255,255,255,0.08)',
-                            color: dailyGoalLitres === g ? '#080A0F' : '#fff',
+                            background: dailyGoalLitres === g ? '#A5FF38' : 'rgba(255,255,255,0.08)',
+                            color: dailyGoalLitres === g ? '#101114' : '#fff',
                             border: 'none',
                             padding: '3px 8px',
                             borderRadius: '6px',
@@ -832,12 +832,12 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
                       stroke="url(#limeGradient)"
                       strokeWidth="8"
                       strokeLinecap="round"
-                      style={{ filter: 'drop-shadow(0 0 6px rgba(132, 204, 22, 0.75))' }}
+                      style={{ filter: 'drop-shadow(0 0 6px rgba(165, 255, 56, 0.75))' }}
                     />
                     <defs>
                       <linearGradient id="limeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#84CC16" />
-                        <stop offset="100%" stopColor="#A3E635" />
+                        <stop offset="0%" stopColor="#A5FF38" />
+                        <stop offset="100%" stopColor="#7ACC28" />
                       </linearGradient>
                     </defs>
                   </svg>
@@ -866,12 +866,12 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
                   justifyContent: 'space-between',
                   marginTop: '16px',
                   fontSize: '0.78rem',
-                  color: '#94A3B8',
+                  color: '#A5A8B0',
                   paddingTop: '10px',
                   borderTop: '1px solid rgba(255, 255, 255, 0.06)'
                 }}>
                   <span>Goal: <strong style={{ color: '#fff' }}>{dailyGoalLitres.toFixed(1)} L</strong></span>
-                  <span>Today: <strong style={{ color: '#84CC16' }}>{currentLitres.toFixed(2)} L</strong></span>
+                  <span>Today: <strong style={{ color: '#A5FF38' }}>{currentLitres.toFixed(2)} L</strong></span>
                 </div>
               </div>
 
@@ -883,9 +883,9 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
                     <button
                       onClick={() => setIsAddExerciseOpen(true)}
                       style={{
-                        background: 'rgba(132, 204, 22, 0.15)',
-                        border: '1px solid rgba(132, 204, 22, 0.3)',
-                        color: '#84CC16',
+                        background: 'rgba(165, 255, 56, 0.15)',
+                        border: '1px solid rgba(165, 255, 56, 0.3)',
+                        color: '#A5FF38',
                         width: '22px',
                         height: '22px',
                         borderRadius: '50%',
@@ -900,7 +900,7 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
                       <Plus size={13} />
                     </button>
                   </div>
-                  <Link to="/sessions" style={{ fontSize: '0.76rem', color: '#84CC16', fontWeight: 600, textDecoration: 'none' }}>
+                  <Link to="/sessions" style={{ fontSize: '0.76rem', color: '#A5FF38', fontWeight: 600, textDecoration: 'none' }}>
                     See all
                   </Link>
                 </div>
@@ -917,7 +917,7 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
                       <div className="workout-item-left">
                         <div 
                           className="workout-icon-bubble" 
-                          style={{ color: workout.completed ? '#84CC16' : '#FF6B00' }}
+                          style={{ color: workout.completed ? '#A5FF38' : '#FF8A32' }}
                         >
                           {workout.completed ? <CheckCircle2 size={17} /> : <Dumbbell size={17} />}
                         </div>
@@ -928,7 +928,7 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
                           <span>{workout.setsReps} &bull; {workout.weight}</span>
                         </div>
                       </div>
-                      <ChevronRight size={16} color="#64748B" />
+                      <ChevronRight size={16} color="#5C6070" />
                     </div>
                   ))}
                 </div>
@@ -966,7 +966,7 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
             {/* Total Members */}
             <div className="wm-stat-metric-card">
               <div className="wm-stat-card-top">
-                <Users size={18} color="#84CC16" />
+                <Users size={18} color="#A5FF38" />
                 <span>Total Members</span>
               </div>
               <div className="wm-stat-card-value">{stats?.totalMembers || 6}</div>
@@ -1004,12 +1004,12 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
             {/* Equipment Maintenance */}
             <div className="wm-stat-metric-card">
               <div className="wm-stat-card-top">
-                <Dumbbell size={18} color="#FF6B00" />
+                <Dumbbell size={18} color="#FF8A32" />
                 <span>Gym Equipment</span>
               </div>
               <div className="wm-stat-card-value">{stats?.totalEquipment || 7}</div>
               <div className="wm-stat-card-trend">
-                <span style={{ color: stats?.equipmentNeedingMaintenance > 0 ? '#EF4444' : '#84CC16' }}>
+                <span style={{ color: stats?.equipmentNeedingMaintenance > 0 ? '#EF4444' : '#A5FF38' }}>
                   {stats?.equipmentNeedingMaintenance || 2}
                 </span> need service
               </div>
@@ -1018,10 +1018,10 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
             {/* Monthly Revenue */}
             <div className="wm-stat-metric-card">
               <div className="wm-stat-card-top">
-                <DollarSign size={18} color="#10B981" />
+                <DollarSign size={18} color="#A5FF38" />
                 <span>Monthly Revenue</span>
               </div>
-              <div className="wm-stat-card-value" style={{ color: '#10B981' }}>
+              <div className="wm-stat-card-value" style={{ color: '#A5FF38' }}>
                 ${Number(stats?.monthlyRevenue || 879.95).toFixed(2)}
               </div>
               <div className="wm-stat-card-trend">
@@ -1040,9 +1040,9 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
             <div className="wm-dashboard-card" style={{ height: '320px' }}>
               <div className="wm-card-header">
                 <h4 className="wm-card-title">
-                  <TrendingUp size={18} color="#84CC16" /> Revenue Growth Trend
+                  <TrendingUp size={18} color="#FF8A32" /> Revenue Growth Trend
                 </h4>
-                <span style={{ fontSize: '0.8rem', color: '#94A3B8' }}>Past 6 Months</span>
+                <span style={{ fontSize: '0.8rem', color: '#A5A8B0' }}>Past 6 Months</span>
               </div>
               <div style={{ flex: 1, minHeight: 0 }}>
                 <Line data={lineChartData} options={lineChartOptions} />
@@ -1072,7 +1072,7 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
                 <h4 className="wm-card-title">
                   <AlertTriangle size={17} color="#F59E0B" /> Subscriptions Expiring Within 7 Days
                 </h4>
-                <Link to="/subscriptions" style={{ fontSize: '0.78rem', color: '#84CC16', fontWeight: 600 }}>
+                <Link to="/subscriptions" style={{ fontSize: '0.78rem', color: '#A5FF38', fontWeight: 600 }}>
                   Manage Plans
                 </Link>
               </div>
@@ -1092,7 +1092,7 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
                       <tr key={sub.id}>
                         <td>
                           <div style={{ fontWeight: 600, color: '#fff' }}>{sub.member?.fullName}</div>
-                          <div style={{ fontSize: '0.74rem', color: '#94A3B8' }}>{sub.member?.phoneNumber}</div>
+                          <div style={{ fontSize: '0.74rem', color: '#A5A8B0' }}>{sub.member?.phoneNumber}</div>
                         </td>
                         <td>{sub.planName}</td>
                         <td style={{ color: '#F59E0B', fontWeight: 700 }}>{sub.expiryDate}</td>
@@ -1112,9 +1112,9 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
             <div className="wm-dashboard-card">
               <div className="wm-card-header">
                 <h4 className="wm-card-title">
-                  <Users size={17} color="#84CC16" /> Recent Member Registrations
+                  <Users size={17} color="#A5FF38" /> Recent Member Registrations
                 </h4>
-                <Link to="/members" style={{ fontSize: '0.78rem', color: '#84CC16', fontWeight: 600 }}>
+                <Link to="/members" style={{ fontSize: '0.78rem', color: '#A5FF38', fontWeight: 600 }}>
                   View All
                 </Link>
               </div>
@@ -1217,7 +1217,7 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
                 <button type="button" className="btn btn-secondary" onClick={() => setIsAddExerciseOpen(false)}>
                   Cancel
                 </button>
-                <button type="submit" className="btn btn-primary" style={{ background: '#84CC16', color: '#080A0F' }}>
+                <button type="submit" className="btn btn-primary">
                   Add Exercise
                 </button>
               </div>
@@ -1243,11 +1243,11 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
             }}>
               <div>
                 <h3 style={{ fontSize: '1.05rem', margin: 0, color: '#fff' }}>{activeVideoDemo.title}</h3>
-                <p style={{ fontSize: '0.74rem', color: '#84CC16', margin: '2px 0 0 0' }}>Biomechanics & Form Execution</p>
+                <p style={{ fontSize: '0.74rem', color: '#A5FF38', margin: '2px 0 0 0' }}>Biomechanics & Form Execution</p>
               </div>
               <button 
                 onClick={() => setVideoModalOpen(false)}
-                style={{ background: 'none', border: 'none', color: '#94A3B8', cursor: 'pointer' }}
+                style={{ background: 'none', border: 'none', color: '#A5A8B0', cursor: 'pointer' }}
               >
                 <X size={20} />
               </button>
@@ -1265,12 +1265,12 @@ export default function Dashboard({ onShowToast, onOpenIntro }) {
               </video>
             </div>
 
-            <div style={{ padding: '16px 20px', background: '#0E121B', fontSize: '0.82rem', color: '#CBD5E1' }}>
+            <div style={{ padding: '16px 20px', background: '#202329', fontSize: '0.82rem', color: '#CBD5E1' }}>
               <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '6px' }}>
-                <Sparkles size={16} color="#84CC16" />
+                <Sparkles size={16} color="#FF8A32" />
                 <strong style={{ color: '#FFFFFF' }}>Key Coaching Cues:</strong>
               </div>
-              <ul style={{ paddingLeft: '20px', margin: 0, lineHeight: 1.6, color: '#94A3B8' }}>
+              <ul style={{ paddingLeft: '20px', margin: 0, lineHeight: 1.6, color: '#A5A8B0' }}>
                 <li>Retract scapula and keep feet firmly planted into the floor.</li>
                 <li>Lower bar with 3-second eccentric control to mid-sternum.</li>
                 <li>Drive up explosively without flaring elbows excessively.</li>

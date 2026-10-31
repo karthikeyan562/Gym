@@ -120,7 +120,7 @@ export default function Navbar({ onToggleSidebar, onOpenIntro, onShowToast }) {
             className="header-pill-intro-btn"
             title="Replay Gym Cinematic Intro"
           >
-            <Play size={13} fill="#84CC16" color="#84CC16" />
+            <Play size={13} fill="#A5FF38" color="#A5FF38" />
             <span>Cinematic Intro</span>
           </button>
         )}
@@ -149,7 +149,7 @@ export default function Navbar({ onToggleSidebar, onOpenIntro, onShowToast }) {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <h4 style={{ fontSize: '0.92rem', color: '#fff', margin: 0, fontWeight: 700 }}>Telemetry Alerts</h4>
                   {unreadCount > 0 && (
-                    <span style={{ fontSize: '0.7rem', background: '#84CC16', color: '#080A0F', padding: '2px 8px', borderRadius: '10px', fontWeight: 800 }}>
+                    <span style={{ fontSize: '0.7rem', background: '#A5FF38', color: '#101114', padding: '2px 8px', borderRadius: '10px', fontWeight: 800 }}>
                       {unreadCount} new
                     </span>
                   )}
@@ -157,13 +157,13 @@ export default function Navbar({ onToggleSidebar, onOpenIntro, onShowToast }) {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <button 
                     onClick={markAllRead}
-                    style={{ background: 'none', border: 'none', color: '#84CC16', fontSize: '0.74rem', cursor: 'pointer', fontWeight: 600 }}
+                    style={{ background: 'none', border: 'none', color: '#A5FF38', fontSize: '0.74rem', cursor: 'pointer', fontWeight: 600 }}
                   >
                     Mark read
                   </button>
                   <button 
                     onClick={() => setShowNotifications(false)}
-                    style={{ background: 'none', border: 'none', color: '#94A3B8', cursor: 'pointer' }}
+                    style={{ background: 'none', border: 'none', color: '#A5A8B0', cursor: 'pointer' }}
                   >
                     <X size={15} />
                   </button>
@@ -185,16 +185,16 @@ export default function Navbar({ onToggleSidebar, onOpenIntro, onShowToast }) {
                     }}
                   >
                     {item.type === 'warning' ? (
-                      <AlertCircle size={18} color="#EAB308" style={{ flexShrink: 0, marginTop: '2px' }} />
+                      <AlertCircle size={18} color="#F59E0B" style={{ flexShrink: 0, marginTop: '2px' }} />
                     ) : item.type === 'success' ? (
-                      <CheckCircle2 size={18} color="#84CC16" style={{ flexShrink: 0, marginTop: '2px' }} />
+                      <CheckCircle2 size={18} color="#A5FF38" style={{ flexShrink: 0, marginTop: '2px' }} />
                     ) : (
-                      <Flame size={18} color="#FF6B00" style={{ flexShrink: 0, marginTop: '2px' }} />
+                      <Flame size={18} color="#FF8A32" style={{ flexShrink: 0, marginTop: '2px' }} />
                     )}
                     <div style={{ flex: 1 }}>
                       <div style={{ fontSize: '0.82rem', fontWeight: 600, color: item.read ? '#CBD5E1' : '#FFFFFF' }}>{item.title}</div>
-                      <div style={{ fontSize: '0.74rem', color: '#94A3B8', marginTop: '2px' }}>{item.desc}</div>
-                      <div style={{ fontSize: '0.68rem', color: '#64748B', marginTop: '4px' }}>{item.time}</div>
+                      <div style={{ fontSize: '0.74rem', color: '#A5A8B0', marginTop: '2px' }}>{item.desc}</div>
+                      <div style={{ fontSize: '0.68rem', color: '#5C6070', marginTop: '4px' }}>{item.time}</div>
                     </div>
                   </div>
                 ))}
@@ -221,7 +221,7 @@ export default function Navbar({ onToggleSidebar, onOpenIntro, onShowToast }) {
           {showQuickAdd && (
             <div className="corely-dropdown-menu" style={{ width: '230px', right: 0 }}>
               <div style={{ padding: '4px 8px 8px 8px', borderBottom: '1px solid rgba(255,255,255,0.08)', marginBottom: '6px' }}>
-                <span style={{ fontSize: '0.76rem', color: '#94A3B8', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.06em' }}>
+                <span style={{ fontSize: '0.76rem', color: '#A5A8B0', textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.06em' }}>
                   Quick Options
                 </span>
               </div>
@@ -230,7 +230,7 @@ export default function Navbar({ onToggleSidebar, onOpenIntro, onShowToast }) {
                 onClick={() => { setShowQuickAdd(false); navigate('/members'); }}
                 className="dropdown-action-item"
               >
-                <UserPlus size={16} color="#84CC16" />
+                <UserPlus size={16} color="#A5FF38" />
                 <span>Add Member</span>
               </button>
               <button
@@ -244,7 +244,7 @@ export default function Navbar({ onToggleSidebar, onOpenIntro, onShowToast }) {
                 onClick={() => { setShowQuickAdd(false); navigate('/equipment'); }}
                 className="dropdown-action-item"
               >
-                <Dumbbell size={16} color="#FF6B00" />
+                <Dumbbell size={16} color="#FF8A32" />
                 <span>Add Equipment</span>
               </button>
               <button
@@ -254,7 +254,7 @@ export default function Navbar({ onToggleSidebar, onOpenIntro, onShowToast }) {
                 }}
                 className="dropdown-action-item"
               >
-                <Droplet size={16} color="#A3E635" />
+                <Droplet size={16} color="#A5FF38" />
                 <span>Quick Log Water</span>
               </button>
             </div>
@@ -293,10 +293,10 @@ export default function Navbar({ onToggleSidebar, onOpenIntro, onShowToast }) {
             <div className="corely-dropdown-menu" style={{ width: '250px', right: 0 }}>
               <div style={{ padding: '8px 10px', borderBottom: '1px solid rgba(255,255,255,0.08)', marginBottom: '6px' }}>
                 <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#fff' }}>{user.fullName}</div>
-                <div style={{ fontSize: '0.74rem', color: '#84CC16', fontWeight: 600 }}>Elite Athlete &bull; Active Tier</div>
+                <div style={{ fontSize: '0.74rem', color: '#A5FF38', fontWeight: 600 }}>Elite Athlete &bull; Active Tier</div>
               </div>
 
-              <div style={{ padding: '4px 10px', fontSize: '0.72rem', color: '#94A3B8', textTransform: 'uppercase', fontWeight: 700 }}>
+              <div style={{ padding: '4px 10px', fontSize: '0.72rem', color: '#A5A8B0', textTransform: 'uppercase', fontWeight: 700 }}>
                 Switch Persona
               </div>
 
@@ -304,7 +304,7 @@ export default function Navbar({ onToggleSidebar, onOpenIntro, onShowToast }) {
                 onClick={() => handleSwitchProfile('Alex Johnson', 'Jan 2024')}
                 className="dropdown-action-item"
               >
-                <User size={15} color="#84CC16" />
+                <User size={15} color="#A5FF38" />
                 <span>Alex Johnson (Athlete)</span>
               </button>
               <button
@@ -318,7 +318,7 @@ export default function Navbar({ onToggleSidebar, onOpenIntro, onShowToast }) {
                 onClick={() => handleSwitchProfile('Viktor Kane', 'Head Coach')}
                 className="dropdown-action-item"
               >
-                <ShieldCheck size={15} color="#FF6B00" />
+                <ShieldCheck size={15} color="#FF8A32" />
                 <span>Viktor Kane (Trainer)</span>
               </button>
 

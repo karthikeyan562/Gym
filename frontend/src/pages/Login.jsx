@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Lock, User, Eye, EyeOff, ShieldCheck, ArrowRight, Play } from 'lucide-react';
+import { Lock, User, Eye, EyeOff, ShieldCheck, ArrowRight, Play, Dumbbell, Sparkles } from 'lucide-react';
 import { api, setAuthToken, setStoredUser } from '../api/apiClient';
 
 export default function Login({ onShowToast, onOpenIntro }) {
@@ -22,14 +22,14 @@ export default function Login({ onShowToast, onOpenIntro }) {
       setStoredUser({
         id: response.id || 1,
         username: response.username || 'admin',
-        email: response.email || 'admin@corely.com',
+        email: response.email || 'admin@workoutmasters.com',
         fullName: response.fullName || 'Alex Johnson',
         role: response.role || 'ROLE_ADMIN',
         joiningDate: 'Jan 2024'
       });
 
       if (onShowToast) {
-        onShowToast('Welcome to Corely, ' + (response.fullName || 'Alex Johnson') + '!', 'success');
+        onShowToast('Welcome to Workout Masters, ' + (response.fullName || 'Alex Johnson') + '!', 'success');
       }
       navigate('/');
     } catch (err) {
@@ -38,14 +38,14 @@ export default function Login({ onShowToast, onOpenIntro }) {
         const fallbackUser = {
           id: 1,
           username: 'admin',
-          email: 'admin@corely.com',
+          email: 'admin@workoutmasters.com',
           fullName: 'Alex Johnson',
           role: 'ROLE_ADMIN',
           joiningDate: 'Jan 2024'
         };
         setAuthToken('corely-jwt-session-token');
         setStoredUser(fallbackUser);
-        if (onShowToast) onShowToast('Signed in to Corely successfully', 'success');
+        if (onShowToast) onShowToast('Signed in to Workout Masters successfully', 'success');
         navigate('/');
       } else {
         setError(err.message || 'Invalid username or password. Default is admin / admin123');
@@ -58,125 +58,153 @@ export default function Login({ onShowToast, onOpenIntro }) {
   const handleUseDemo = () => {
     setUsername('admin');
     setPassword('admin123');
+    setError('');
   };
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      background: 'radial-gradient(circle at 50% 20%, rgba(132, 204, 22, 0.12) 0%, #080A0F 70%)',
-      padding: '20px',
-      position: 'relative',
-      overflow: 'hidden'
-    }}>
-      {/* Background Aesthetic Blur Shapes */}
-      <div style={{
-        position: 'absolute',
-        width: '500px',
-        height: '500px',
-        borderRadius: '50%',
-        background: 'rgba(132, 204, 22, 0.08)',
-        filter: 'blur(120px)',
-        top: '10%',
-        left: '15%',
-        pointerEvents: 'none'
-      }} />
+    <div className="login-container">
+      {/* Multiverse Ambient Decorative Glows */}
+      <div
+        className="multiverse-mesh-bg"
+        style={{
+          width: '540px',
+          height: '540px',
+          background: 'radial-gradient(circle, rgba(139, 92, 246, 0.22) 0%, transparent 70%)',
+          top: '-8%',
+          left: '12%'
+        }}
+      />
+      <div
+        className="multiverse-mesh-bg"
+        style={{
+          width: '480px',
+          height: '480px',
+          background: 'radial-gradient(circle, rgba(255, 138, 50, 0.2) 0%, transparent 70%)',
+          bottom: '-10%',
+          right: '10%'
+        }}
+      />
+      <div
+        className="multiverse-mesh-bg"
+        style={{
+          width: '380px',
+          height: '380px',
+          background: 'radial-gradient(circle, rgba(165, 255, 56, 0.14) 0%, transparent 70%)',
+          top: '40%',
+          right: '35%'
+        }}
+      />
 
-      <div style={{
-        width: '100%',
-        maxWidth: '460px',
-        background: '#121620',
-        border: '1px solid rgba(255, 255, 255, 0.12)',
-        boxShadow: '0 24px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(132, 204, 22, 0.12)',
-        borderRadius: '24px',
-        padding: '40px',
-        position: 'relative',
-        zIndex: 10
-      }}>
+      {/* Subtle Multiverse Geometric Grid Accents */}
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px)',
+          backgroundSize: '48px 48px',
+          pointerEvents: 'none'
+        }}
+      />
+
+      {/* Centered Premium Glassmorphic Card */}
+      <div className="login-card" style={{ maxWidth: '420px' }}>
         {/* Brand Header */}
-        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-          <div style={{
-            width: '68px',
-            height: '68px',
-            background: 'linear-gradient(135deg, #A3E635 0%, #65A30D 100%)',
-            borderRadius: '50%',
-            display: 'inline-flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            boxShadow: '0 8px 30px rgba(163, 230, 53, 0.4)',
-            marginBottom: '16px',
-            color: '#080A0F'
-          }}>
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#080A0F" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+        <div style={{ textAlign: 'center', marginBottom: '28px' }}>
+          <div className="login-brand-logo">
+            <svg
+              width="36"
+              height="36"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#FFFFFF"
+              strokeWidth="2.4"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1 .4-1 1v4c0 .6.4 1 1 1h3l2 3h4l1-2" />
               <circle cx="12" cy="4" r="2" />
             </svg>
           </div>
-          <h1 style={{
-            fontFamily: "var(--font-heading)",
-            fontSize: '2rem',
-            fontWeight: 800,
-            letterSpacing: '-0.02em',
-            color: '#fff',
-            margin: 0
-          }}>
-            Corely <span style={{ color: '#84CC16' }}>HUD</span>
+
+          {/* Logo with Orange / TVA Green Gradient Text Split */}
+          <h1 className="login-brand-title">
+            <span style={{
+              background: 'linear-gradient(135deg, #FF8A32 0%, #FFA055 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              fontWeight: 900
+            }}>
+              WORKOUT
+            </span>{' '}
+            <span style={{
+              background: 'linear-gradient(135deg, #A5FF38 0%, #7ACC28 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              fontWeight: 900
+            }}>
+              MASTERS
+            </span>
           </h1>
-          <p style={{ color: '#94A3B8', fontSize: '0.88rem', marginTop: '6px' }}>
-            Next-Gen Performance & Gym Command Center
+
+          <p className="login-brand-subtitle">
+            Premium Performance Management
           </p>
+
+          <div style={{ marginTop: '10px' }}>
+            <span className="multiverse-pill">
+              <Sparkles size={12} />
+              LOKI MULTIVERSE SYNC
+            </span>
+          </div>
         </div>
 
+        {/* Error Alert */}
         {error && (
-          <div style={{
-            background: 'rgba(239, 68, 68, 0.12)',
-            border: '1px solid rgba(239, 68, 68, 0.3)',
-            borderRadius: '12px',
-            padding: '12px 16px',
-            color: '#EF4444',
-            fontSize: '0.85rem',
-            marginBottom: '20px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px'
-          }}>
-            <ShieldCheck size={18} />
+          <div className="login-error-alert">
+            <ShieldCheck size={18} style={{ flexShrink: 0 }} />
             <span>{error}</span>
           </div>
         )}
 
+        {/* Credentials Form */}
         <form onSubmit={handleSubmit}>
           <div className="form-group" style={{ marginBottom: '18px' }}>
-            <label className="form-label">Username / Email</label>
+            <label className="form-label">Username / Operator Email</label>
             <div style={{ position: 'relative' }}>
               <input
                 type="text"
-                className="form-control"
+                className="form-input"
                 style={{ paddingLeft: '42px' }}
                 placeholder="admin or admin@gym.com"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
               />
-              <User size={18} color="#94A3B8" style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)' }} />
+              <User
+                size={18}
+                color="#5C6070"
+                style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)' }}
+              />
             </div>
           </div>
 
           <div className="form-group" style={{ marginBottom: '24px' }}>
-            <label className="form-label">Password</label>
+            <label className="form-label">Security Key / Password</label>
             <div style={{ position: 'relative' }}>
               <input
                 type={showPassword ? 'text' : 'password'}
-                className="form-control"
+                className="form-input"
                 style={{ paddingLeft: '42px', paddingRight: '42px' }}
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <Lock size={18} color="#94A3B8" style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)' }} />
+              <Lock
+                size={18}
+                color="#5C6070"
+                style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)' }}
+              />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
@@ -187,9 +215,12 @@ export default function Login({ onShowToast, onOpenIntro }) {
                   transform: 'translateY(-50%)',
                   background: 'none',
                   border: 'none',
-                  color: '#94A3B8',
-                  cursor: 'pointer'
+                  color: '#A5A8B0',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center'
                 }}
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
               >
                 {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
               </button>
@@ -198,47 +229,22 @@ export default function Login({ onShowToast, onOpenIntro }) {
 
           <button
             type="submit"
-            className="btn btn-primary"
+            className="btn btn-primary login-submit-btn"
             disabled={loading}
-            style={{
-              width: '100%',
-              padding: '14px',
-              fontSize: '1rem',
-              fontWeight: 800,
-              background: 'linear-gradient(135deg, #A3E635 0%, #84CC16 100%)',
-              color: '#080A0F',
-              boxShadow: '0 4px 20px rgba(132, 204, 22, 0.4)',
-              border: 'none',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '8px'
-            }}
           >
-            {loading ? 'Authenticating...' : 'Enter Corely Dashboard'}
+            {loading ? 'Authenticating...' : 'Enter Workout Masters'}
             {!loading && <ArrowRight size={18} />}
           </button>
         </form>
 
         {/* Demo Auto-Fill Shortcut */}
-        <div style={{ marginTop: '20px', textAlign: 'center' }}>
+        <div style={{ marginTop: '22px', textAlign: 'center' }}>
           <button
             type="button"
             onClick={handleUseDemo}
-            style={{
-              background: 'rgba(255, 255, 255, 0.05)',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              color: '#94A3B8',
-              borderRadius: '9999px',
-              padding: '8px 18px',
-              fontSize: '0.8rem',
-              fontWeight: 600,
-              cursor: 'pointer',
-              transition: 'all 0.2s'
-            }}
+            className="login-demo-pill"
           >
-            Auto-Fill Demo Credentials (<span style={{ color: '#84CC16' }}>admin / admin123</span>)
+            Auto-Fill Demo Credentials (<span style={{ color: 'var(--accent-orange)' }}>admin / admin123</span>)
           </button>
         </div>
 
@@ -251,16 +257,18 @@ export default function Login({ onShowToast, onOpenIntro }) {
               style={{
                 background: 'none',
                 border: 'none',
-                color: '#84CC16',
+                color: 'var(--color-tva-green)',
                 fontSize: '0.82rem',
                 fontWeight: 600,
                 cursor: 'pointer',
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '6px'
+                gap: '6px',
+                transition: 'all 0.2s'
               }}
             >
-              <Play size={14} fill="#84CC16" /> Watch Cinematic Gym Intro
+              <Play size={14} fill="#A5FF38" color="#A5FF38" />
+              Watch Cinematic Gym Intro
             </button>
           </div>
         )}

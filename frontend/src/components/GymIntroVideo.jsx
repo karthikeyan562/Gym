@@ -307,7 +307,7 @@ export default function GymIntroVideo({ isOpen, onEnter }) {
           <button
             onClick={handleEnterClick}
             style={{
-              background: 'linear-gradient(135deg, #FF6B00 0%, #FF8533 50%, #84CC16 100%)',
+              background: 'linear-gradient(135deg, #FF8A32 0%, #FFA055 50%, #A5FF38 100%)',
               color: '#FFFFFF',
               border: 'none',
               padding: '18px 46px',
@@ -319,7 +319,7 @@ export default function GymIntroVideo({ isOpen, onEnter }) {
               display: 'inline-flex',
               alignItems: 'center',
               gap: '14px',
-              boxShadow: '0 10px 40px rgba(255, 107, 0, 0.45)',
+              boxShadow: '0 10px 40px rgba(255, 138, 50, 0.45)',
               transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
               transform: 'scale(1)'
             }}

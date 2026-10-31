@@ -12,7 +12,7 @@ export default function BodyMuscleHeatmap({ onOpenDemoVideo }) {
       zone: 'Anterior Upper Torso',
       activation: '94%',
       status: 'Prime Mover',
-      color: '#84CC16',
+      color: '#A5FF38',
       exercises: ['Flat Barbell Bench', 'Incline Dumbbell Press', 'Cable Crossover']
     },
     traps: {
@@ -20,7 +20,7 @@ export default function BodyMuscleHeatmap({ onOpenDemoVideo }) {
       zone: 'Posterior Neck & Scapula',
       activation: '88%',
       status: 'Secondary Stabilizer',
-      color: '#EAB308',
+      color: '#F59E0B',
       exercises: ['Overhead Dumbbell Press', 'Barbell Shrugs', 'Face Pulls']
     },
     shoulders: {
@@ -36,7 +36,7 @@ export default function BodyMuscleHeatmap({ onOpenDemoVideo }) {
       zone: 'Posterior Back Wing',
       activation: '82%',
       status: 'Targeted',
-      color: '#A855F7',
+      color: '#8B5CF6',
       exercises: ['Wide Grip Lat Pulldown', 'Barbell Rows', 'Pull-ups']
     },
     biceps: {
@@ -44,7 +44,7 @@ export default function BodyMuscleHeatmap({ onOpenDemoVideo }) {
       zone: 'Anterior Upper Arm',
       activation: '79%',
       status: 'Auxiliary',
-      color: '#FF6B00',
+      color: '#FF8A32',
       exercises: ['Incline Dumbbell Curl', 'Preacher Curl', 'Hammer Curls']
     }
   };
@@ -86,7 +86,7 @@ export default function BodyMuscleHeatmap({ onOpenDemoVideo }) {
             title="Adjust Reps to Failure target"
           >
             <span>{repsToFailure}</span>
-            <span style={{ fontSize: '0.65rem', color: '#84CC16' }}>⌵</span>
+            <span style={{ fontSize: '0.65rem', color: '#A5FF38' }}>⌵</span>
           </button>
 
           {showRirMenu && (
@@ -94,7 +94,7 @@ export default function BodyMuscleHeatmap({ onOpenDemoVideo }) {
               position: 'absolute',
               top: '100%',
               right: 0,
-              background: '#121620',
+              background: '#202329',
               border: '1px solid rgba(255,255,255,0.12)',
               borderRadius: '12px',
               padding: '6px',
@@ -174,33 +174,33 @@ export default function BodyMuscleHeatmap({ onOpenDemoVideo }) {
             {/* Biceps Front */}
             <path
               d="M24 52 L38 64 L34 94 L22 82 Z"
-              fill={selectedMuscle === 'biceps' ? 'rgba(255, 107, 0, 0.3)' : '#151C2B'}
-              stroke={selectedMuscle === 'biceps' ? '#FF6B00' : '#334155'}
+              fill={selectedMuscle === 'biceps' ? 'rgba(255, 138, 50, 0.3)' : '#191B20'}
+              stroke={selectedMuscle === 'biceps' ? '#FF8A32' : '#334155'}
               strokeWidth="1"
               cursor="pointer"
               onClick={() => setSelectedMuscle('biceps')}
             />
             <path
               d="M76 52 L62 64 L66 94 L78 82 Z"
-              fill={selectedMuscle === 'biceps' ? 'rgba(255, 107, 0, 0.3)' : '#151C2B'}
-              stroke={selectedMuscle === 'biceps' ? '#FF6B00' : '#334155'}
+              fill={selectedMuscle === 'biceps' ? 'rgba(255, 138, 50, 0.3)' : '#191B20'}
+              stroke={selectedMuscle === 'biceps' ? '#FF8A32' : '#334155'}
               strokeWidth="1"
               cursor="pointer"
               onClick={() => setSelectedMuscle('biceps')}
             />
 
             {/* Forearms */}
-            <path d="M22 84 L32 94 L27 126 L18 120 Z" fill="#111723" stroke="#2B3648" strokeWidth="1" />
-            <path d="M78 84 L68 94 L73 126 L82 120 Z" fill="#111723" stroke="#2B3648" strokeWidth="1" />
+            <path d="M22 84 L32 94 L27 126 L18 120 Z" fill="#14161B" stroke="#2B3648" strokeWidth="1" />
+            <path d="M78 84 L68 94 L73 126 L82 120 Z" fill="#14161B" stroke="#2B3648" strokeWidth="1" />
 
-            {/* CHEST - PECTORALS (HIGHLIGHTED IN VIBRANT NEON LIME AS IN SCREENSHOT) */}
+            {/* CHEST - PECTORALS (HIGHLIGHTED IN VIBRANT TVA GREEN) */}
             <path
               d="M37 42 C42 42 48 45 50 51 C52 45 58 42 63 42 C70 42 74 49 72 59 C70 67 58 71 50 74 C42 71 30 67 28 59 C26 49 30 42 37 42 Z"
-              fill="#84CC16"
-              stroke="#A3E635"
+              fill="#A5FF38"
+              stroke="#A5FF38"
               strokeWidth="1.8"
               style={{
-                filter: 'drop-shadow(0 0 10px rgba(132, 204, 22, 0.85))',
+                filter: 'drop-shadow(0 0 10px rgba(165, 255, 56, 0.85))',
                 cursor: 'pointer',
                 transition: 'all 0.2s'
               }}
@@ -328,14 +328,14 @@ export default function BodyMuscleHeatmap({ onOpenDemoVideo }) {
 
       {/* SUB-WIDGET 1: Workout Intensity Speedometer Gauge */}
       <div style={{
-        background: '#0D111A',
+        background: '#191B20',
         borderRadius: '16px',
         padding: '14px 16px',
         border: '1px solid rgba(255, 255, 255, 0.08)'
       }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
-          <span style={{ fontSize: '0.78rem', color: '#94A3B8', fontWeight: 600 }}>Workout Intensity</span>
-          <span style={{ fontSize: '0.72rem', color: '#84CC16', fontWeight: 700, letterSpacing: '0.04em' }}>PEAK</span>
+          <span style={{ fontSize: '0.78rem', color: '#A5A8B0', fontWeight: 600 }}>Workout Intensity</span>
+          <span style={{ fontSize: '0.72rem', color: '#A5FF38', fontWeight: 700, letterSpacing: '0.04em' }}>PEAK</span>
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
